@@ -14,3 +14,4 @@ We have used these files or dataset: chicago.csv, new_york_city.csv and chicago.
 
 ### Credits
 Website of pandas library: https://pandas.pydata.org/pandas-docs/stable/genindex.html
+Model of README from https://github.com/udacity/pdsnd_github
