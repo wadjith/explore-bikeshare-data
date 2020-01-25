@@ -27,26 +27,26 @@ def get_filters():
             print("City's name should be {}".format(cities))
 
     # get user input for month (all, january, february, ... , june)
-    month_values = ['all', 'january', 'february', 'march', 'april', 'may', 'june']
+    monthValues = ['all', 'january', 'february', 'march', 'april', 'may', 'june']
     print()
     while True:
         print('Would you like to filter data by which month (all, january, february, ... , june)?')
         month = input('').lower()
-        if(month in month_values):
+        if(month in monthValues):
             break
         else:
-            print("Month's value should be {}".format(month_values))
+            print("Month's value should be {}".format(monthValues))
 
     # get user input for day of week (all, monday, tuesday, ... sunday)
-    day_values = ['all', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
+    dayValues = ['all', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
     print()
     while True:
         print('Would you like to filter data by which day of week (all, monday, tuesday, ... sunday)?')
         day = input('').lower()
-        if(day in day_values):
+        if(day in dayValues):
             break
         else:
-            print("Day's value should be {}".format(day_values))
+            print("Day's value should be {}".format(dayValues))
 
     print('-'*40)
     return city, month, day
@@ -95,7 +95,7 @@ def time_stats(df):
     """Displays statistics on the most frequent times of travel."""
 
     print('\nCalculating The Most Frequent Times of Travel...\n')
-    start_time = time.time()
+    startTime = time.time()
 
     # display the most common month
     months = ['january', 'february', 'march', 'april', 'may', 'june']
@@ -116,7 +116,7 @@ def time_stats(df):
     print("What is the most common start hour of travel ?")
     print(chour)
 
-    print("\nThis took %s seconds." % (time.time() - start_time))
+    print("\nThis took %s seconds." % (time.time() - startTime))
     print('-'*40)
 
 
@@ -124,7 +124,7 @@ def station_stats(df):
     """Displays statistics on the most popular stations and trip."""
 
     print('\nCalculating The Most Popular Stations and Trip...\n')
-    start_time = time.time()
+    startTime = time.time()
 
     # display most commonly used start station
     cstart = df['Start Station'].mode()[0]
@@ -146,7 +146,7 @@ def station_stats(df):
     print("What is the most common trip from start to end ? ")
     print(cpath)
 
-    print("\nThis took %s seconds." % (time.time() - start_time))
+    print("\nThis took %s seconds." % (time.time() - startTime))
     print('-'*40)
 
 
@@ -154,21 +154,21 @@ def trip_duration_stats(df):
     """Displays statistics on the total and average trip duration."""
 
     print('\nCalculating Trip Duration...\n')
-    start_time = time.time()
+    startTime = time.time()
 
     # display total travel time
-    total_time = df['Trip Duration'].sum()
+    totalTime = df['Trip Duration'].sum()
     print()
     print("What is the total travel time ?")
-    print(total_time)
+    print(totalTime)
 
     # display mean travel time
-    mean_time = df['Trip Duration'].mean()
+    meanTime = df['Trip Duration'].mean()
     print()
     print("What is the mean travel time ?")
-    print(mean_time)
+    print(meanTime)
 
-    print("\nThis took %s seconds." % (time.time() - start_time))
+    print("\nThis took %s seconds." % (time.time() - startTime))
     print('-'*40)
 
 
@@ -176,13 +176,13 @@ def user_stats(df):
     """Displays statistics on bikeshare users."""
 
     print('\nCalculating User Stats...\n')
-    start_time = time.time()
+    startTime = time.time()
 
     # Display counts of user types
-    user_types = df['User Type'].value_counts()
+    userTypes = df['User Type'].value_counts()
     print()
     print("What is the breakdown of users ?")
-    print(user_types)
+    print(userTypes)
 
     # Display counts of gender
     print()
@@ -197,12 +197,12 @@ def user_stats(df):
     print()
     print('What is the oldest, youngest, and most popular year of birth respectively ?')
     if 'Birth Year' in df:
-        birth_year = (df['Birth Year'].min(), df['Birth Year'].max(), df['Birth Year'].mode()[0])
-        print(birth_year)
+        birthYear = (df['Birth Year'].min(), df['Birth Year'].max(), df['Birth Year'].mode()[0])
+        print(birthYear)
     else:
         print('Information about year of birth is not collected for the city')
 
-    print("\nThis took %s seconds." % (time.time() - start_time))
+    print("\nThis took %s seconds." % (time.time() - startTime))
     print('-'*40)
 
 
@@ -221,7 +221,7 @@ def print_next_5lines(df, start = 0):
     # get a subset of the dataframe from line = start to line = end-1
     data = df.iloc[start:end, :].copy()
     # number of rows in the dataset
-    nb_row = df.shape[0]
+    nbRow = df.shape[0]
 
     # removes unnecessary columns in the new dataframe
     data.drop('Path', axis = 1, inplace = True)
@@ -230,21 +230,21 @@ def print_next_5lines(df, start = 0):
     data.drop('hour', axis = 1, inplace = True)
 
     # list of columns of the dataframe
-    data_columns = data.columns
+    dataColumns = data.columns
     # list of lines of values within data.
-    data_values = data.values
+    dataValues = data.values
 
     # Print the list of dictionnary
-    print('SHOWING RAW DATA FROM LINE {} TO {} OVER {} ROWS'.format(start, end-1, nb_row))
+    print('SHOWING RAW DATA FROM LINE {} TO {} OVER {} ROWS'.format(start, end-1, nbRow))
     print('-'*60)
 
     for  i in range(5):
         print()
         # get a line of value as a list
-        line_value = data_values[i]
+        line_value = dataValues[i]
         j = 0
-        # loop over data_columns an line_value to fill the dictionnary
-        for k in data_columns:
+        # loop over dataColumns an line_value to fill the dictionnary
+        for k in dataColumns:
             print('{} = {}'.format(k, line_value[j]))
             j += 1
 
