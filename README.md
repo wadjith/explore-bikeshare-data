@@ -1,10 +1,10 @@
 # explore-bikeshare-data
 
 ### Date created
-Include the date you created this project and README file.
+2020-01-25
 
 ### Project Title
-Replace the Project Title
+Explore US Bikeshare Data
 
 ### Description
 Describe what your project is about and what it does
